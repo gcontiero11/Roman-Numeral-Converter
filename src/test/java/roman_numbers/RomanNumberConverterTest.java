@@ -19,26 +19,26 @@ public class RomanNumberConverterTest {
     }
 
 
-//    @ParameterizedTest
-//    @CsvSource({
-//            "I,1",
-//            "IV,4",
-//            "V,5",
-//            "VI,6",
-//            "X,10",
-//            "XIII,18",
-//            "XIX,19",
-//            "XX,20",
-//            "L,50",
-//            "C,100",
-//            "LLL,150",
-//            "D,500",
-//            "M,1000"
-//    })
-//    @DisplayName("Should convert roman numeral to arabic numeral")
-//    void shouldConvertRomanNumeralToArabicNumeral(String romanNumeral, int arabicNumeral) {
-//        assertThat(romanNumberConverter.of(romanNumeral)).isEqualTo(arabicNumeral);
-//    }
+    @ParameterizedTest
+    @CsvSource({
+            "I,1",
+            "IV,4",
+            "V,5",
+            "VI,6",
+            "X,10",
+            "XIII,18",
+            "XIX,19",
+            "XX,20",
+            "L,50",
+            "C,100",
+            "LLL,150",
+            "D,500",
+            "M,1000"
+    })
+    @DisplayName("Should convert roman numeral to arabic numeral")
+    void shouldConvertRomanNumeralToArabicNumeral(String romanNumeral, int arabicNumeral) {
+        assertThat(romanNumberConverter.of(romanNumeral)).isEqualTo(arabicNumeral);
+    }
 
     @Test
     void shouldThrowExceptionOnEmptyString() {
