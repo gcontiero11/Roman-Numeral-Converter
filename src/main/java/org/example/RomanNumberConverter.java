@@ -2,6 +2,9 @@ package org.example;
 
 public class RomanNumberConverter {
     public int of(String romanNumber) {
+        char[] romanNumberArray = romanNumber.toCharArray();
+
+
         int answer = switch (romanNumber) {
                         case "I" ->  1;
                         case "V" ->  5;

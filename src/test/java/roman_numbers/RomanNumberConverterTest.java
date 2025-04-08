@@ -39,4 +39,13 @@ public class RomanNumberConverterTest {
         assertThat(romanNumberConverter.of(romanNumeral)).isEqualTo(arabicNumeral);
     }
 
+    @Test
+    void shouldThrowExceptionOnEmptyString() {
+        assertThatException().isThrownBy(() -> romanNumberConverter.of(""));
+    }
+
+    @Test
+    void shouldThrowExceptionOnNullString() {
+        assertThatException().isThrownBy(() -> romanNumberConverter.of(null));
+    }
 }
