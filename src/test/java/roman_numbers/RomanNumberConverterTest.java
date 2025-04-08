@@ -31,6 +31,7 @@ public class RomanNumberConverterTest {
             "XX,20",
             "L,50",
             "C,100",
+            "LLL,150",
             "D,500",
             "M,1000"
     })
