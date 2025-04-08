@@ -4,6 +4,8 @@ import org.example.RomanNumberConverter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -16,24 +18,25 @@ public class RomanNumberConverterTest {
         romanNumberConverter = new RomanNumberConverter();
     }
 
-    @Test
-    @DisplayName("Should convert I to the number One")
-    public void shouldConvertRomanNumberIToOne() {
-        assertThat(romanNumberConverter.of("I")).isEqualTo(1);
-    }
 
-    @Test
-    @DisplayName("Should convert V to the number Five")
-    public void shouldConvertRomanNumberVToFive() {
-        assertThat(romanNumberConverter.of("V")).isEqualTo(5);
+    @ParameterizedTest
+    @CsvSource({
+            "I,1",
+            "IV,4",
+            "V,5",
+            "VI,6",
+            "X,10",
+            "XIII,18",
+            "XIX,19",
+            "XX,20",
+            "L,50",
+            "C,100",
+            "D,500",
+            "M,1000"
+    })
+    @DisplayName("Should convert roman numeral to arabic numeral")
+    void shouldConvertRomanNumeralToArabicNumeral(String romanNumeral, int arabicNumeral) {
+        assertThat(romanNumberConverter.of(romanNumeral)).isEqualTo(arabicNumeral);
     }
-
-    @Test
-    @DisplayName("Should convert X to the number Ten")
-    public void shouldConvertRomanNumberXToTen() {
-        assertThat(romanNumberConverter.of("V")).isEqualTo(10);
-        assertThatException().isThrownBy(() -> romanNumberConverter.of("X"));
-    }
-
 
 }
