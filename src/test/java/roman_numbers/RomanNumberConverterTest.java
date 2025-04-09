@@ -26,7 +26,8 @@ public class RomanNumberConverterTest {
             "V,5",
             "VI,6",
             "X,10",
-            "XIII,18",
+            "XIII,13",
+            "XVIII,18",
             "XIX,19",
             "XX,20",
             "L,50",
@@ -37,16 +38,27 @@ public class RomanNumberConverterTest {
     })
     @DisplayName("Should convert roman numeral to arabic numeral")
     void shouldConvertRomanNumeralToArabicNumeral(String romanNumeral, int arabicNumeral) {
-        assertThat(romanNumberConverter.of(romanNumeral)).isEqualTo(arabicNumeral);
+        assertThat(romanNumberConverter.arabicNumberFrom(romanNumeral)).isEqualTo(arabicNumeral);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "IIII",
+            "IIIV",
+            "IIV"
+    })
+    @DisplayName("Should Throw Exception Of Invalid Roman Number")
+    void shouldThrowExceptionOfInvalidRomanNumber(String romanNumeral) {
+        assertThatIllegalArgumentException().isThrownBy(() -> romanNumberConverter.arabicNumberFrom(romanNumeral));
     }
 
     @Test
     void shouldThrowExceptionOnEmptyString() {
-        assertThatException().isThrownBy(() -> romanNumberConverter.of(""));
+        assertThatException().isThrownBy(() -> romanNumberConverter.arabicNumberFrom(""));
     }
 
     @Test
     void shouldThrowExceptionOnNullString() {
-        assertThatException().isThrownBy(() -> romanNumberConverter.of(null));
+        assertThatException().isThrownBy(() -> romanNumberConverter.arabicNumberFrom(null));
     }
 }
