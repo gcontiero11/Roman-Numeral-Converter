@@ -10,7 +10,7 @@ public class RomanNumberConverter {
                         case "C" ->  100;
                         case "D" ->  500;
                         case "M" ->  1000;
-            default -> throw new IllegalStateException("Unexpected value: " + romanNumber);
+            default -> 0;
         };
 
 
